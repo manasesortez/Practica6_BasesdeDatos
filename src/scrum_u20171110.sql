@@ -113,8 +113,33 @@ En este parte vamos a hacer las mismas peticiones de
 los ejercicios de arriba con la condicion que ahora
 lo arremos con WHERE **/
 
+/**INNER JOIN (interna) WHERE**/
+SELECT personas.nombre, personas.apellido, personas.nacimiento, pais.pais
+FROM personas, pais WHERE personas.id_pais = pais.id_pais;
 
+SELECT personas.nombre, personas.apellido, personas.nacimiento, roles.rol, pais.pais
+FROM personas INNER JOIN pais ON personas.id_pais = pais.id_pais, roles
+WHERE personas.id_rol = roles.id_rol
 
+/** LEFT JOIN o LEFT OUTER JOIN (externa) WHERE**/
 
+SELECT  personas.nombre, personas.apellido, personas.sueldo, pais.pais
+FROM pais
+LEFT JOIN personas
+ON pais.id_pais = personas.id_pais
+
+/** RIGHT JOIN o RIGHT OUTER JOIN (externa) WHERE**/
+
+SELECT personas.nombre, personas.apellido, personas.sueldo, roles.rol
+FROM personas
+RIGHT JOIN roles
+ON personas.id_rol = roles.id_rol;
+
+/** FULL JOIN o FULL OUTER JOIN (externa) WHERE **/
+SELECT personas.nombre, personas.apellido, personas.sueldo, pais.pais
+FROM pais
+FULL JOIN personas
+ON pais.id_pais = personas.id_pais
 
 /** 2. Realice pruebas con la base de datos NORTWIND. **/
+
